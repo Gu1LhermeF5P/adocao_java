@@ -1,85 +1,74 @@
-Que ótimo! Melhorar o README é sempre uma excelente ideia para garantir a clareza e profissionalismo do seu projeto.
+🐾 Sistema de Adoção de Animais (AdocãoApp)
+O AdocãoApp é uma aplicação web completa, desenvolvida como Projeto Diamante Final de Java Advanced. O sistema propõe uma solução moderna e segura para a gestão de animais em abrigos, conectando animais resgatados a potenciais adotantes através de uma plataforma intuitiva.
 
-O README a seguir está otimizado com melhor formatação, emojis e foco na clareza para a execução.
-
-🐾 Projeto Diamante Final: Sistema de Adoção de Animais
-Este é o projeto final para a disciplina de Java Advanced, focado na construção de uma aplicação web completa com a arquitetura Spring Boot MVC para facilitar a adoção de animais.
-
-👨‍💻 Equipe de Desenvolvimento
-Nome Completo	RM
+👨‍💻 Desenvolvedores
+Membro	Matrícula (RM)
 Guilherme Francisco	RM-557648
 Larissa de Freitas	RM-555136
 
 Exportar para as Planilhas
-✨ Stack Tecnológica e Requisitos
-O projeto foi desenvolvido atendendo aos seguintes requisitos mandatórios:
+✨ Funcionalidades Principais
+🔒 Autenticação Externa (OAuth2): Login seguro implementado via Spring Security utilizando provedores externos (e.g., GitHub).
 
-Categoria	Requisito Técnico	Detalhes
-Backend/Core	Spring Boot MVC	Fornece a estrutura (Controller, Service, Repository) da aplicação.
-Persistência	Spring Data JPA	Utilizado para mapeamento ORM (Objeto-Relacional).
-Banco de Dados	Docker Compose Suporte	O PostgreSQL é executado em um container para ambiente padronizado.
-Migrações	Flyway	Gerencia e versiona o schema do banco de dados (Ex: criação da tabela animal).
-Autenticação	OAuth2	Login seguro com provedor externo (Ex: GitHub).
-Frontend	Thymeleaf & DaisyUI	Thymeleaf para views dinâmicas e DaisyUI (plugin Tailwind CSS) para estilização moderna.
+🐶 Dashboard de Adoção: Lista intuitiva de animais disponíveis, apresentando informações essenciais como nome, espécie e descrição.
+
+🎨 Interface Responsiva: Estilização moderna e limpa garantida pelo uso do DaisyUI (baseado em Tailwind CSS).
+
+🔄 Persistência com JPA: Gestão de dados de animais persistidos através de entidades JPA.
+
+🗃️ Migração de Banco de Dados: O Flyway assegura o versionamento e a integridade do schema da base de dados.
+
+🛠️ Tecnologias Utilizadas
+Categoria	Tecnologia	Detalhes
+Backend	Java 17, Spring Boot 3, Spring Data JPA, Spring Security	Núcleo da aplicação e lógica de negócio.
+Frontend	Thymeleaf, daisyUI, Tailwind CSS	Criação de views dinâmicas e design elegante.
+Banco de Dados	PostgreSQL & Flyway	Banco relacional robusto rodando via Docker Compose.
+Build	Maven	Gerenciamento de dependências.
+Infra	Docker Compose	Ambiente padronizado para o banco de dados.
 
 Exportar para as Planilhas
-⚙️ Guia de Configuração e Execução
-Siga os passos abaixo para colocar o projeto no ar.
-
+🚀 Como Executar o Projeto Localmente
 Pré-requisitos
-Certifique-se de que os seguintes softwares estão instalados e funcionando:
+Para rodar o projeto, você deve ter instalado:
 
 Java Development Kit (JDK) 17+
 
-Apache Maven 3+
+Apache Maven
 
-Docker Desktop (Aberto e em execução)
+Docker Desktop (OBRIGATÓRIO): Deve estar aberto e em execução.
 
-Node.js & npm (Necessário apenas para compilar o Tailwind/DaisyUI)
+Node.js & npm: Necessário para compilar o DaisyUI.
 
-1. Inicialização do Banco de Dados (Docker)
-Navegue até a pasta raiz do projeto (/adocao) no seu terminal e inicie o serviço PostgreSQL:
+1. Inicialização da Infraestrutura (PostgreSQL)
+Navegue até o diretório raiz do projeto (onde está o docker-compose.yml) e inicie o banco de dados:
 
 Bash
 
+# Inicia o container PostgreSQL em background (porta 5432)
 docker compose up -d
-Verificação: Use docker ps para confirmar que o contêiner postgres-db está ativo na porta 5432.
+2. Configuração e Build do Frontend
+Compile o CSS do DaisyUI e configure as credenciais de autenticação:
 
-2. Configuração de Variáveis de Ambiente
-Edite o arquivo src/main/resources/application.properties para configurar as credenciais do OAuth2.
-
-Properties
-
-# Credenciais OAuth2 do GitHub (SUBSTITUA PELAS SUAS!)
-spring.security.oauth2.client.registration.github.client-id=SOv23liTQKK671jPo5eLh
-spring.security.oauth2.client.registration.github.client-secret=Sbeeb6882bd912b4523578d78a11024991b6a0923
-Atenção: Se não fizer essa substituição, o login OAuth2 não funcionará.
-
-3. Compilação do Frontend (DaisyUI / Tailwind)
-DaisyUI é compilado via Node.js. Se você alterou algum arquivo HTML ou configurou o tailwind.config.js, compile o CSS final:
-
-Instale as dependências Node na raiz do projeto:
-
+A. Build do CSS:
 Bash
 
+# Instala dependências de frontend (se for a primeira vez)
 npm install
-Gere o arquivo CSS final:
-
-Bash
-
+# Compila o Tailwind/DaisyUI para o arquivo style.css final
 npm run build:css
-4. Execução da Aplicação Spring Boot
-Inicie a aplicação após garantir que o banco de dados está rodando.
+B. Credenciais OAuth2:
+Substitua os placeholders SEU_CLIENT_ID e SEU_CLIENT_SECRET no arquivo src/main/resources/application.properties com suas credenciais de um provedor OAuth2 (e.g., GitHub).
+
+3. Execução da Aplicação Spring Boot
+Com o banco de dados ativo e as configurações prontas, inicie a aplicação:
 
 Bash
 
+# Inicia o servidor Tomcat
 ./mvnw spring-boot:run
-O log deve indicar que o Flyway migrou o banco de dados e que o servidor Tomcat iniciou:
+🔑 Acesso ao Sistema
+Após a aplicação iniciar (o log mostrará o servidor Tomcat na porta 8080), acesse o link abaixo:
 
-... Tomcat initialized with port 8080 (http)
-🌐 Acesso ao Sistema
-Acesse a URL abaixo no seu navegador para utilizar o sistema de adoção:
+URL da Aplicação: http://localhost:8080
 
-URL: http://localhost:8080
-
-A página inicial irá direcioná-lo para a tela de login via OAuth2 para acessar o conteúdo
+O sistema irá solicitar o login, que será feito através do botão de Login com GitHub (ou o provedor OAuth2 configurado).
