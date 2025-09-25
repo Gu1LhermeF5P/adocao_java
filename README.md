@@ -2,7 +2,7 @@
 O AdocãoApp é uma aplicação web completa, desenvolvida como Projeto Diamante Final de Java Advanced. O sistema propõe uma solução moderna e segura para a gestão de animais em abrigos, conectando animais resgatados a potenciais adotantes através de uma plataforma intuitiva.
 
 👨‍💻 Desenvolvedores
-Membro	Matrícula (RM)
+
 Guilherme Francisco	RM-557648
 Larissa de Freitas	RM-555136
 
