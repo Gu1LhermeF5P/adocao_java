@@ -1,13 +1,13 @@
-🐾 Projeto Diamante Final: Sistema de Adoção de Animais
+🐾 #Projeto Diamante Final: Sistema de Adoção de Animais
 Este projeto é o Produto Final da disciplina de Java Advanced (Segundo Semestre). Trata-se de uma aplicação web completa desenvolvida com a arquitetura MVC (Model-View-Controller) usando a stack Spring Boot.
 
-👥 Integrantes
-Nome Completo	
-Guilherme Francisco	RM-557648
-Larissa de Freitas	RM-555136
+👥 #Integrantes
 
-Exportar para as Planilhas
-🚀 Tecnologias e Requisitos
+#Guilherme Francisco	#RM-557648
+#Larissa de Freitas	#RM-555136
+
+
+🚀 #Tecnologias e Requisitos
 Este projeto foi construído para atender todos os requisitos técnicos estabelecidos:
 
 Requisito	Tecnologia Utilizada	Detalhes
