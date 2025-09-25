@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Login</h2>
+    <p>Para visualizar a página de adoção, você precisa fazer login.</p>
+    <a th:href="@{/oauth2/authorization/github}" class="btn">
+        Login com GitHub
+    </a>
+</div>
+</body>
+</html>
