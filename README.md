@@ -1,78 +1,85 @@
+Que ótimo! Melhorar o README é sempre uma excelente ideia para garantir a clareza e profissionalismo do seu projeto.
+
+O README a seguir está otimizado com melhor formatação, emojis e foco na clareza para a execução.
+
 🐾 Projeto Diamante Final: Sistema de Adoção de Animais
-Este projeto é o Produto Final da disciplina de Java Advanced (Segundo Semestre). Trata-se de uma aplicação web completa desenvolvida com a arquitetura MVC (Model-View-Controller) usando a stack Spring Boot.
+Este é o projeto final para a disciplina de Java Advanced, focado na construção de uma aplicação web completa com a arquitetura Spring Boot MVC para facilitar a adoção de animais.
 
-👥 #Integrantes
-
+👨‍💻 Equipe de Desenvolvimento
+Nome Completo	RM
 Guilherme Francisco	RM-557648
 Larissa de Freitas	RM-555136
 
+Exportar para as Planilhas
+✨ Stack Tecnológica e Requisitos
+O projeto foi desenvolvido atendendo aos seguintes requisitos mandatórios:
 
-🚀 #Tecnologias e Requisitos
-Este projeto foi construído para atender todos os requisitos técnicos estabelecidos:
-
-Requisito	Tecnologia Utilizada	Detalhes
-Arquitetura	Spring Boot MVC	Estrutura modular para gerenciar requisições e dados.
-Front-end	Thymeleaf e DaisyUI	Thymeleaf para templates dinâmicos e DaisyUI (via Tailwind CSS) para estilização moderna e responsiva.
-Persistência	Spring Data JPA	Utilizado para mapeamento Objeto-Relacional (ORM) e interação com o banco de dados.
-Banco de Dados	PostgreSQL (via Docker Compose)	O banco de dados é inicializado em um contêiner Docker para garantir a portabilidade do ambiente.
-Migrações	Flyway	Gerenciamento de versionamento do esquema do banco de dados (tabelas e índices).
-Autenticação	OAuth2	Implementado para login seguro utilizando um provedor externo (ex: GitHub).
+Categoria	Requisito Técnico	Detalhes
+Backend/Core	Spring Boot MVC	Fornece a estrutura (Controller, Service, Repository) da aplicação.
+Persistência	Spring Data JPA	Utilizado para mapeamento ORM (Objeto-Relacional).
+Banco de Dados	Docker Compose Suporte	O PostgreSQL é executado em um container para ambiente padronizado.
+Migrações	Flyway	Gerencia e versiona o schema do banco de dados (Ex: criação da tabela animal).
+Autenticação	OAuth2	Login seguro com provedor externo (Ex: GitHub).
+Frontend	Thymeleaf & DaisyUI	Thymeleaf para views dinâmicas e DaisyUI (plugin Tailwind CSS) para estilização moderna.
 
 Exportar para as Planilhas
-🛠️ Configuração e Execução
-Para rodar o projeto, você precisa ter o Java 17+, o Maven e o Docker Desktop instalados e em execução.
+⚙️ Guia de Configuração e Execução
+Siga os passos abaixo para colocar o projeto no ar.
 
-Passo 1: Configurar o Docker (Banco de Dados)
-O banco de dados PostgreSQL deve ser iniciado primeiro usando o docker-compose.yml.
+Pré-requisitos
+Certifique-se de que os seguintes softwares estão instalados e funcionando:
 
-Abra o Docker Desktop e certifique-se de que ele está Running.
+Java Development Kit (JDK) 17+
 
-Navegue até a pasta raiz do projeto (/adocao) no seu terminal.
+Apache Maven 3+
 
-Execute o Docker Compose para iniciar o banco de dados em segundo plano:
+Docker Desktop (Aberto e em execução)
+
+Node.js & npm (Necessário apenas para compilar o Tailwind/DaisyUI)
+
+1. Inicialização do Banco de Dados (Docker)
+Navegue até a pasta raiz do projeto (/adocao) no seu terminal e inicie o serviço PostgreSQL:
 
 Bash
 
 docker compose up -d
-(O serviço do PostgreSQL estará rodando na porta 5432).
+Verificação: Use docker ps para confirmar que o contêiner postgres-db está ativo na porta 5432.
 
-Passo 2: Configurar Credenciais OAuth2
-Para que o login funcione, você deve substituir as credenciais no arquivo src/main/resources/application.properties pelas suas credenciais reais do GitHub:
+2. Configuração de Variáveis de Ambiente
+Edite o arquivo src/main/resources/application.properties para configurar as credenciais do OAuth2.
 
 Properties
 
-spring.security.oauth2.client.registration.github.client-id=SEU_CLIENT_ID
-spring.security.oauth2.client.registration.github.client-secret=SEU_CLIENT_SECRET
-Passo 3: Executar a Aplicação Spring Boot
-Com o banco de dados ativo e as credenciais configuradas, inicie o servidor da aplicação.
+# Credenciais OAuth2 do GitHub (SUBSTITUA PELAS SUAS!)
+spring.security.oauth2.client.registration.github.client-id=SOv23liTQKK671jPo5eLh
+spring.security.oauth2.client.registration.github.client-secret=Sbeeb6882bd912b4523578d78a11024991b6a0923
+Atenção: Se não fizer essa substituição, o login OAuth2 não funcionará.
 
-Via IDE: Abra o projeto na sua IDE (IntelliJ, VS Code, etc.) e execute a classe principal AdocaoApplication.java.
+3. Compilação do Frontend (DaisyUI / Tailwind)
+DaisyUI é compilado via Node.js. Se você alterou algum arquivo HTML ou configurou o tailwind.config.js, compile o CSS final:
 
-Via Terminal (Maven):
+Instale as dependências Node na raiz do projeto:
+
+Bash
+
+npm install
+Gere o arquivo CSS final:
+
+Bash
+
+npm run build:css
+4. Execução da Aplicação Spring Boot
+Inicie a aplicação após garantir que o banco de dados está rodando.
 
 Bash
 
 ./mvnw spring-boot:run
-🌍 Acesso à Aplicação
-Após o log indicar que o servidor Tomcat iniciou (na porta 8080), a aplicação estará disponível no seu navegador:
+O log deve indicar que o Flyway migrou o banco de dados e que o servidor Tomcat iniciou:
 
-URL de Acesso: http://localhost:8080
+... Tomcat initialized with port 8080 (http)
+🌐 Acesso ao Sistema
+Acesse a URL abaixo no seu navegador para utilizar o sistema de adoção:
 
-A página inicial exigirá que o usuário realize o Login com OAuth2 (GitHub) antes de acessar a listagem de animais.
+URL: http://localhost:8080
 
-📂 Estrutura de Pastas
-Abaixo está a estrutura simplificada do projeto:
-
-adocao
-├───src/main/java/com/meuprojeto/adocao
-│   ├───config        # Configurações de Segurança (OAuth2)
-│   ├───controller    # Lógica MVC e Mapeamento de Rotas
-│   ├───model         # Entidades JPA (Animal.java)
-│   ├───repository    # Interfaces Spring Data JPA
-│   └───AdocaoApplication.java
-├───src/main/resources
-│   ├───db/migration  # Scripts Flyway (V1__create_animal_table.sql)
-│   ├───static/css    # Arquivos CSS (DaisyUI/Tailwind CSS compilado)
-│   ├───templates     # Arquivos HTML com Thymeleaf
-│   └───application.properties # Configurações de BD, Server e OAuth2
-└───docker-compose.yml # Configuração do PostgreSQL no Docker
+A página inicial irá direcioná-lo para a tela de login via OAuth2 para acessar o conteúdo
